@@ -56,8 +56,12 @@ async def webdl(_, m):
     if not os.path.isdir(dir):
         os.makedirs(dir)
 
-    obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
-    res = obj.savePage(url, dir)
+  
+    kwargs = { 'project_name' : 'site-name' }
+    try:
+        res = save_website(url=url ,project_folder=dir ,**kwargs)
+    except:
+        return await msg.edit('something went wrong! on your try and except .')
     if not res:
         return await msg.edit('something went wrong!')
 
