@@ -61,7 +61,7 @@ async def webdl(_, m):
     try:
         res = save_website(url=url ,project_folder=dir ,**kwargs)
     except as e:
-        return await msg.edit(e)
+        return await msg.edit("something went wrong on your try and except")
     if not res:
         return await msg.edit('something went wrong!')
 
