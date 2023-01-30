@@ -3,6 +3,7 @@ import shutil
 from web_dl import urlDownloader
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pywebcopy import save_website
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 API_ID = os.environ.get("API_ID")
