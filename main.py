@@ -16,7 +16,7 @@ Bot = Client(
 )
 
 START_TXT = """
-Hi {}, I am Web Downloader Bot.
+Hi {}, I am Web Downloader Bot2.
 
 I can download all the components (.html, .css, img, xml, video, javascript..) from URLs.
 
