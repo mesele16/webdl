@@ -17,7 +17,7 @@ Bot = Client(
 )
 
 START_TXT = """
-Hi {}, I am Web Downloader Bot2.
+Hi {}, I am Web Downloader Bot.
 
 I can download all the components (.html, .css, img, xml, video, javascript..) from URLs.
 
@@ -57,14 +57,20 @@ async def webdl(_, m):
     if not os.path.isdir(dir):
         os.makedirs(dir)
 
-  
-    kwargs = { 'project_name' : 'site-name' }
+    # obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
+    # res = obj.savePage(url, dir)
     try:
-        res = save_website(url=url ,project_folder=dir ,**kwargs)
-    except:
-        return await msg.edit("something went wrong on your try and except")
-    if not res:
-        return await msg.edit('something went wrong!')
+        res = save_website(
+        url=url,
+        project_folder=dir,
+        project_name="my_site",
+        bypass_robots=True,
+        debug=True,
+        open_in_browser=False,
+        delay=None,
+        threaded=False,)
+    except Exception as e:
+        await msg.edit(str(e))
 
     shutil.make_archive(name, 'zip', base_dir=dir)
     await m.reply_document(name+'.zip')
