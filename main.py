@@ -17,7 +17,7 @@ Bot = Client(
 )
 
 START_TXT = """
-Hi {}, I am Web Downloader Bort.
+Hi {}, I am Web Downloader Bort2.
 
 I can download all the components (.html, .css, img, xml, video, javascript..) from URLs.
 
@@ -55,7 +55,7 @@ async def webdl(_, m):
     url = m.text
     name = dir = str(m.chat.id)
     folder = os.getcwd()+str(m.chat.id)
-    if not os.path.isdir(dir):
+    if not os.path.isdir(folder):
         os.makedirs(dir)
 
     # obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
@@ -63,7 +63,7 @@ async def webdl(_, m):
     try:
         res = save_website(
         url=url,
-        project_folder=dir,
+        project_folder=folder,
         project_name="my_site",
         bypass_robots=True,
         debug=True,
