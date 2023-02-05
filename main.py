@@ -17,7 +17,7 @@ Bot = Client(
 )
 
 START_TXT = """
-Hi {}, I am Web Downloader Bot.
+Hi {}, I am Web Downloader Bort.
 
 I can download all the components (.html, .css, img, xml, video, javascript..) from URLs.
 
@@ -54,6 +54,7 @@ async def webdl(_, m):
     msg = await m.reply('Processing..')
     url = m.text
     name = dir = str(m.chat.id)
+    folder = os.getcwd()+str(m.chat.id)
     if not os.path.isdir(dir):
         os.makedirs(dir)
 
