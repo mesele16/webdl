@@ -55,8 +55,8 @@ async def webdl(_, m):
     url = m.text
     name = dir = str(m.chat.id)
     folder = os.getcwd()+str(m.chat.id)
-    if not os.path.isdir(folder):
-        os.makedirs(dir)
+    if not os.path.isdir(name):
+        os.makedirs(name)
 
     # obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
     # res = obj.savePage(url, dir)
@@ -64,7 +64,7 @@ async def webdl(_, m):
         res = save_website(
         url=url,
         project_folder=folder,
-        project_name="my_site",
+        project_name="MesaX",
         bypass_robots=True,
         debug=True,
         open_in_browser=False,
@@ -73,8 +73,8 @@ async def webdl(_, m):
     except Exception as e:
         await msg.edit(str(e))
 
-    shutil.make_archive(folder, 'zip', base_dir=folder)
-    await m.reply_document(folder+'.zip')
+    shutil.make_archive(name, 'zip', base_dir=dir)
+    await m.reply_document(name+'.zip')
     await msg.delete()
 
     shutil.rmtree(dir)
