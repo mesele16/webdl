@@ -73,8 +73,8 @@ async def webdl(_, m):
     except Exception as e:
         await msg.edit(str(e))
 
-    shutil.make_archive(name, 'zip', base_dir=dir)
-    await m.reply_document(name+'.zip')
+    shutil.make_archive(folder, 'zip', base_dir=folder)
+    await m.reply_document(folder+'.zip')
     await msg.delete()
 
     shutil.rmtree(dir)
