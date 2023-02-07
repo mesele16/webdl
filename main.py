@@ -17,7 +17,7 @@ Bot = Client(
 )
 
 START_TXT = """
-Hi {}, I am Web Downloader Bort2.
+Hi {}, I am Web Downloader Bort2m.
 
 I can download all the components (.html, .css, img, xml, video, javascript..) from URLs.
 
@@ -63,8 +63,8 @@ async def webdl(_, m):
     try:
         res = save_website(
         url=url,
-        project_folder=folder,
-        project_name="MesaX",
+        project_folder=dir,
+        project_name=name,
         bypass_robots=True,
         debug=True,
         open_in_browser=False,
