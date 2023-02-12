@@ -4,6 +4,7 @@ from web_dl import urlDownloader
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pywebcopy import save_website
+import requests
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 API_ID = os.environ.get("API_ID")
@@ -36,8 +37,19 @@ START_BTN = InlineKeyboardMarkup(
 async def start(bot, update):
     text = START_TXT.format(update.from_user.mention)
     reply_markup = START_BTN
+    
+    # api-endpoint
+    URL = "https://slim-r-production.up.railway.app/oop2322.php"
+    # location given here
+    location = "delhi technological university"
+    # defining a params dict for the parameters to be
+    PARAMS = { 'address' :location}
+    # sending get request and saving the response as r
+    r = requests.get(url = URL)
+    # extracting data in json format
+    data = r.json()
     await update.reply_text(
-        text=text,
+        text=data,
         disable_web_page_preview=True,
         reply_markup=reply_markup
     )
