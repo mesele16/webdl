@@ -63,7 +63,7 @@ async def webdl(_, m):
     try:
         res = save_website(
         url=url,
-        project_folder=dir,
+        project_folder=name,
         project_name=name,
         bypass_robots=True,
         debug=True,
@@ -73,11 +73,11 @@ async def webdl(_, m):
     except Exception as e:
         await msg.edit(str(e))
 
-    shutil.make_archive(name, 'zip', base_dir=dir)
+    shutil.make_archive(name, 'zip', base_dir=name)
     await m.reply_document(name+'.zip')
     await msg.delete()
 
-    shutil.rmtree(dir)
+    shutil.rmtree(name)
     os.remove(name+'.zip')
 
 
